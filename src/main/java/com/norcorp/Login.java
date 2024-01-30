@@ -27,15 +27,15 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("uname");
-		String password = request.getParameter("pass");
+		String uname = request.getParameter("uname");
+		String pass = request.getParameter("pass");
 		
 		
 		LoginDao dao = new LoginDao();
 		
-		if(dao.check(username, password)) {
+		if(dao.check(uname, pass)) {
 			HttpSession session = request.getSession();
-			session.setAttribute("username", username);
+			session.setAttribute("username", uname);
 			response.sendRedirect("welcome.jsp");
 		}
 		else {
